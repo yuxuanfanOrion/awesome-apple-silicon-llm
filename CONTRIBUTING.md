@@ -1,5 +1,7 @@
 # Contributing
 
+欢迎补充资源。提交前请对照下面的收录标准和格式。
+
 ## What gets in
 
 - It is about running, optimizing or understanding model inference on Apple Silicon. General ML resources that only happen to run on a Mac do not qualify.
@@ -9,15 +11,17 @@
 
 ## Format
 
-One line per entry, in the section that matches the layer it belongs to:
+One numbered line per entry, appended to the section that matches the layer it belongs to:
 
 ```markdown
-- [owner/repo](https://github.com/owner/repo) - What it does, and when you would use it.
+12. [owner/repo](https://github.com/owner/repo): What it does, and when you would use it.
 ```
 
 - One sentence, specific: name the compute unit (GPU, ANE, CPU), the format or the API where it matters.
 - No star counts, no marketing words, no emoji.
-- Use a hyphen between link and description, not an em dash.
+- Use a colon between link and description, not a dash.
+- Mark projects with no commit in the last year with "last updated in YYYY". Archived projects are left out.
+- If you add or remove an entry, update the `entries` badge at the top of the README.
 
 ## Before opening a pull request
 
