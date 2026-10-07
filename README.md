@@ -174,6 +174,9 @@ A reading order from first contact to writing your own Metal kernel.
 - **Raw decode:** 18.5 tok/s, 86.7% of the wall, against mlx-lm's 17.8 on the same bytes.
 - **Speculative verify is not free on Apple GPUs.** MLX's int4 matmul reads the weights once per row for 2 to 15 rows, so an 8-row verify costs 2.2-3.6x a decode step (1.13x on the 5090). A Metal 4 `matmul2d` kernel on the M5 Neural Accelerators brings 8 rows to 1.45-1.85x.
 - **With the drafts:** 28-33 tok/s on essays (MTP head), 40-42 on code and 47-50 on math (DFlash2), and 61 tok/s on a code request through the OpenAI-compatible server.
+- **Against vLLM and SGLang on the same Mac and the same bytes:** raw decode is a tie (vllm-metal 0.31: 13.9-17.0 tok/s in an interleaved run, token-rush in between). Neither rival can speculate on this GDN hybrid model: vllm-metal rejects MTP, DFlash2's candidate head and even ngram verification for hybrid models on Metal; SGLang's MLX backend does not start on v0.5.16-v0.5.21 and on v0.5.15 sends the GDN layers to a torch backend it never initializes. So the drafts are the whole 2-3x margin.
+- **Grouped-query attention needs folding on MLX.** MLX's multi-row attention kernel reads K/V once per query head; folding the 6 query heads of each KV head into the row dimension with an explicit causal mask made the 8-row verify 3.2x cheaper at 60k context. The needle is found at 8k, 32k and 60k, and DFlash2 still gives 17-35 tok/s there.
+- **Check fused kernels bit for bit.** `mx.compile` of the GDN gating changed fp32 results by 3.8e-6, which the recurrence turned into a 2x larger KL to the reference on one prompt; it stays uncompiled.
 - **Benchmark on a laptop in one interleaved run.** The same configuration measured 74 ms and later 115 ms per step as the machine heated.
 
 ## Contributing
