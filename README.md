@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Awesome Mac-adapted Infra</h1>
+  <h1>Awesome Apple Silicon LLM</h1>
   <p>Apple Silicon（M 系列 Mac）模型推理资源汇总，持续更新</p>
   <p>Curated repositories, docs, papers and talks for running and optimizing model inference on Apple Silicon</p>
   <p>
@@ -8,6 +8,7 @@
     <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
+    <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
   </p>
 </div>
 
@@ -301,6 +302,15 @@ Decode tok/s, single stream, greedy, 256 tokens, one OpenAI-compatible client fo
 ## 贡献 Contributing
 
 欢迎提交 PR 补充资源。See [CONTRIBUTING.md](CONTRIBUTING.md) for the entry format and what gets accepted.
+
+## Star History
+
+<a href="https://star-history.com/#yuxuanfanOrion/awesome-apple-silicon-llm&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=yuxuanfanOrion/awesome-apple-silicon-llm&type=Date&theme=dark">
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=yuxuanfanOrion/awesome-apple-silicon-llm&type=Date">
+  </picture>
+</a>
 
 ## 许可 License
 
