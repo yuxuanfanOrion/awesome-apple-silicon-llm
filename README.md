@@ -273,7 +273,7 @@ The focus is the inference stack itself: how weights move through unified memory
 
 ## 案例 token-rush on Apple Silicon
 
-[token-rush](https://github.com/zyhector/token-rush) is a single-stream inference engine for Qwen3.8-27B built for one RTX 5090, ported here to MLX on a MacBook Pro M5 Pro (64 GB). The port lives on the `mac-mlx` branch of the fork [yuxuanfanOrion/token-rush](https://github.com/yuxuanfanOrion/token-rush-apple-silicon/tree/mac-mlx) and is proposed upstream as a pull request; the full write-up with every measurement is its `docs/mac.md`. The short version:
+[token-rush](https://github.com/zyhector/token-rush) is a single-stream inference engine for Qwen3.8-27B built for one RTX 5090, ported here to MLX on a MacBook Pro M5 Pro (64 GB). The port lives on the `mac-mlx` branch of the fork [yuxuanfanOrion/token-rush-apple-silicon](https://github.com/yuxuanfanOrion/token-rush-apple-silicon/tree/mac-mlx) and is proposed upstream as a pull request; the full write-up with every measurement is its `docs/mac.md`. The short version:
 
 | engine on the M5 Pro, same int4 bytes | essay | code | math |
 |---|---|---|---|
