@@ -21,7 +21,8 @@ One numbered line per entry, appended to the section that matches the layer it b
 - No star counts, no marketing words, no emoji.
 - Use a colon between link and description, not a dash.
 - Mark projects with no commit in the last year with "last updated in YYYY". Archived projects are left out.
-- If you add or remove an entry, update the `entries` badge at the top of the README.
+- The README comes in three languages: `README.md` (English), `README.zh-CN.md` (Simplified Chinese) and `README.ko.md` (Korean). Add the entry to all three at the same position. If you cannot write one of the languages, put the English description there and say so in the pull request.
+- If you add or remove an entry, update the `entries` badge at the top of all three READMEs.
 
 ## Before opening a pull request
 

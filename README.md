@@ -1,9 +1,9 @@
 <div align="center">
   <h1>Awesome Apple Silicon LLM</h1>
-  <p>Apple Silicon（M 系列 Mac）模型推理资源汇总，持续更新</p>
-  <p>Curated repositories, docs, papers and talks for running and optimizing model inference on Apple Silicon</p>
+  <p>Repositories, docs, papers and talks for running and optimizing model inference on Apple Silicon Macs</p>
+  <p><b>English</b> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ko.md">한국어</a></p>
   <p>
-    <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome"></a>
+    <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
     <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
@@ -12,45 +12,56 @@
   </p>
 </div>
 
-这份列表关注推理栈本身：权重怎样在统一内存里流动，哪个运行时用哪块计算单元，底层 kernel 怎么写。按层次组织，先是基本原理（统一内存、带宽上限、prefill 与 decode 的区别、GPU 与 ANE），再到 MLX 官方生态、推理服务、跨平台引擎的 Metal 后端、Neural Engine、量化、底层 kernel、多机分布式、benchmark 和论文。
-
-The focus is the inference stack itself: how weights move through unified memory, which runtime uses which compute unit, and how to write the kernels underneath.
+This list is about the inference stack itself: how weights move through unified memory, which runtime uses which compute unit, and how the kernels underneath are written. Sections run from the bottom up: first principles (unified memory, the bandwidth ceiling, prefill versus decode, GPU versus ANE), then the MLX family, serving, the Metal backends of cross-platform engines, the Neural Engine, quantization, kernels, multi-Mac setups, benchmarks and papers.
 
 > [!TIP]
-> 第一次接触这个方向，从 [学习路线 Learning Path](#学习路线-learning-path) 开始。想看一个完整的移植案例（CUDA 引擎搬到 MLX，带每一步的测量），看 [案例 token-rush](#案例-token-rush-on-apple-silicon)。
+> New to the area? Pick a row in [Where to start](#where-to-start), or follow the [Learning path](#learning-path) from first contact to your own Metal kernel. For a complete port of a CUDA engine to MLX with a measurement at every step, read the [token-rush case study](#case-study-token-rush-on-apple-silicon).
 
 > [!NOTE]
-> Star counts are not listed. Every link was checked to resolve, and every GitHub link to be the canonical repository rather than a fork, on 2026-10-07. Archived projects are left out.
+> Star counts are not listed. On 2026-10-07 every link was checked to resolve, and every GitHub link to be the canonical repository rather than a fork. Archived projects are left out.
 
-#### 更新 Updates
+### Updates
 
-- 2026-10-07: Reorganized into numbered, bilingual sections. New sections: quantization and speculative decoding, monitoring, speech and image. 30 new entries. The token-rush case study now covers llama.cpp and SGLang.
+- 2026-10-08: The README now comes in English, Simplified Chinese and Korean. Added a "Where to start" table.
+- 2026-10-07: Reorganized into numbered sections. New sections: quantization and speculative decoding, monitoring, speech and image. 30 new entries. The token-rush case study now covers llama.cpp and SGLang.
 - 2026-10-06: First version, 84 entries.
 
-#### 目录 Contents
+### Contents
 
-- [基础原理 Fundamentals](#基础原理-fundamentals)
-- [MLX 生态 MLX Family](#mlx-生态-mlx-family)
-- [推理服务 Inference Engines and Serving](#推理服务-inference-engines-and-serving)
-- [跨平台引擎 Engines with a Metal Backend](#跨平台引擎-engines-with-a-metal-backend)
-- [应用 Apps and On-device SDKs](#应用-apps-and-on-device-sdks)
-- [神经引擎 Neural Engine](#神经引擎-neural-engine)
-- [量化与投机解码 Quantization and Speculative Decoding](#量化与投机解码-quantization-and-speculative-decoding)
-- [底层 Kernels and Low Level](#底层-kernels-and-low-level)
-- [分布式 Distributed](#分布式-distributed)
-- [语音与图像 Speech and Image](#语音与图像-speech-and-image)
-- [监控 Monitoring](#监控-monitoring)
-- [评测 Benchmarks](#评测-benchmarks)
-- [论文 Papers](#论文-papers)
-- [教程 Talks and Tutorials](#教程-talks-and-tutorials)
-- [中文资源 Chinese Resources](#中文资源-chinese-resources)
-- [相关列表 Related Lists](#相关列表-related-lists)
-- [学习路线 Learning Path](#学习路线-learning-path)
-- [案例 token-rush on Apple Silicon](#案例-token-rush-on-apple-silicon)
+- [Where to start](#where-to-start)
+- [Fundamentals](#fundamentals)
+- [MLX family](#mlx-family)
+- [Inference engines and serving](#inference-engines-and-serving)
+- [Engines with a Metal backend](#engines-with-a-metal-backend)
+- [Apps and on-device SDKs](#apps-and-on-device-sdks)
+- [Neural Engine](#neural-engine)
+- [Quantization and speculative decoding](#quantization-and-speculative-decoding)
+- [Kernels and low level](#kernels-and-low-level)
+- [Distributed](#distributed)
+- [Speech and image](#speech-and-image)
+- [Monitoring](#monitoring)
+- [Benchmarks](#benchmarks)
+- [Papers](#papers)
+- [Talks and tutorials](#talks-and-tutorials)
+- [Chinese-language resources](#chinese-language-resources)
+- [Related lists](#related-lists)
+- [Learning path](#learning-path)
+- [Case study: token-rush on Apple Silicon](#case-study-token-rush-on-apple-silicon)
 
-![](https://i.imgur.com/waxVImv.png)
+## Where to start
 
-## 基础原理 Fundamentals
+| You want to | Start with |
+|---|---|
+| Chat with a local model without writing code | [Ollama](https://github.com/ollama/ollama), [Jan](https://github.com/janhq/jan), [Llama-macOS](https://github.com/ggml-org/Llama-macOS) |
+| Generate text from Python | [mlx-lm](https://github.com/ml-explore/mlx-lm) |
+| Serve an OpenAI-compatible API | [`mlx_lm.server`](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/SERVER.md), [oMLX](https://github.com/jundot/omlx) for continuous batching, [vllm-metal](https://github.com/vllm-project/vllm-metal) |
+| Ship a model inside a macOS or iOS app | [MLX Swift](https://github.com/ml-explore/mlx-swift), [swift-transformers](https://github.com/huggingface/swift-transformers), [Core ML](https://developer.apple.com/documentation/coreml) |
+| Run a model on the Neural Engine | [Anemll](https://github.com/Anemll/Anemll), [coremltools](https://github.com/apple/coremltools) |
+| Write your own Metal kernel | [MLX custom Metal kernels](https://ml-explore.github.io/mlx/build/html/dev/custom_metal_kernels.html), [metal-flash-attention](https://github.com/philipturner/metal-flash-attention) |
+| Run one model across several Macs | [exo](https://github.com/exo-explore/exo), [MLX distributed](https://ml-explore.github.io/mlx/build/html/usage/distributed.html) |
+| Compare decode speed across M-series chips | [llama.cpp discussion #4167](https://github.com/ggml-org/llama.cpp/discussions/4167) |
+
+## Fundamentals
 
 > [!NOTE]
 > CPU, GPU and Neural Engine share one pool of unified memory, so there is no host-to-device copy and a 64 GB Mac can hold a model a 32 GB discrete card cannot. Single-stream decode reads every weight once per token, so its ceiling is roughly memory bandwidth divided by bytes read per token; that is why quantization moves tokens per second more than anything else. Prefill processes many tokens per weight read and is bound by compute instead, which is the part the M5 GPU's Neural Accelerators (matrix-multiply units inside each GPU core) speed up. The ANE is a separate fixed-function unit reached through Core ML or private APIs; it is power-efficient but constrained in layout, shapes and on-chip SRAM, so most LLM runtimes use the GPU.
@@ -62,9 +73,9 @@ The focus is the inference stack itself: how weights move through unified memory
 5. [hollance/neural-engine](https://github.com/hollance/neural-engine): Community notes on what the ANE is, which layers it supports and why a model falls back to GPU or CPU.
 6. [PyTorch MPS backend notes](https://docs.pytorch.org/docs/stable/notes/mps.html): What the PyTorch Metal backend supports; useful when deciding whether PyTorch is enough or a port to MLX is needed.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## MLX 生态 MLX Family
+## MLX family
 
 1. [ml-explore/mlx](https://github.com/ml-explore/mlx): Apple's array framework for Apple Silicon with Python, C++, C and Swift APIs, lazy evaluation and Metal kernels. The base for most Mac-native inference work.
 2. [ml-explore/mlx-lm](https://github.com/ml-explore/mlx-lm): LLM generation, quantization, LoRA fine-tuning and an OpenAI-compatible server on MLX. Read its model files to see how each architecture is written for MLX.
@@ -82,9 +93,9 @@ The focus is the inference stack itself: how weights move through unified memory
 14. [mlx-community on Hugging Face](https://huggingface.co/mlx-community): Thousands of models already converted and quantized for MLX.
 15. [Hugging Face Hub docs: MLX](https://huggingface.co/docs/hub/en/mlx): How MLX models are found, downloaded and uploaded on the Hub.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 推理服务 Inference Engines and Serving
+## Inference engines and serving
 
 1. [jundot/omlx](https://github.com/jundot/omlx): Apple Silicon inference server with continuous batching and an SSD-backed KV cache, for serving several requests from one Mac.
 2. [vllm-project/vllm-metal](https://github.com/vllm-project/vllm-metal): Community-maintained vLLM hardware plugin that runs the vLLM engine and API on MLX, with experimental paged attention. [Docs](https://docs.vllm.ai/projects/vllm-metal/en/latest/).
@@ -97,9 +108,9 @@ The focus is the inference stack itself: how weights move through unified memory
 9. [trymirai/uzu](https://github.com/trymirai/uzu): Rust inference engine with a Metal backend that uses unified memory on Apple devices, aimed at embedding models in apps.
 10. [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm): Course that builds a small LLM serving system on MLX from scratch: attention, KV cache, batching, quantized matmul. [Book](https://skyzh.github.io/tiny-llm/).
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 跨平台引擎 Engines with a Metal Backend
+## Engines with a Metal backend
 
 1. [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp): C/C++ LLM inference with a mature Metal backend and the GGUF format; the usual reference point for Mac decode speed.
 2. [ggml-org/ggml](https://github.com/ggml-org/ggml): The tensor library under llama.cpp and whisper.cpp; its Metal source is the place to read hand-written quantized kernels.
@@ -113,9 +124,9 @@ The focus is the inference stack itself: how weights move through unified memory
 10. [pytorch/executorch](https://github.com/pytorch/executorch): PyTorch's on-device runtime, with MPS and Core ML delegates for Apple hardware.
 11. [mudler/LocalAI](https://github.com/mudler/LocalAI): Local API server whose backends wrap llama.cpp, MLX, whisper.cpp and others, with Apple Silicon among the supported targets.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 应用 Apps and On-device SDKs
+## Apps and on-device SDKs
 
 1. [ggml-org/Llama-macOS](https://github.com/ggml-org/Llama-macOS): Menu bar app from the ggml team for running local LLMs on macOS.
 2. [johnmai-dev/ChatMLX](https://github.com/johnmai-dev/ChatMLX): Open-source macOS chat app on MLX Swift.
@@ -129,9 +140,9 @@ The focus is the inference stack itself: how weights move through unified memory
 10. [argmaxinc/DiffusionKit](https://github.com/argmaxinc/DiffusionKit): On-device image generation with Core ML and MLX.
 11. [drawthingsai/draw-things-community](https://github.com/drawthingsai/draw-things-community): Community source of the Draw Things image-generation app, with a Swift package and `draw-things-cli` for macOS.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 神经引擎 Neural Engine
+## Neural Engine
 
 1. [Deploying Transformers on the Apple Neural Engine](https://machinelearning.apple.com/research/neural-engine-transformers): Apple's explanation of the ANE-friendly rewrite: channels-first (B, C, 1, S) layout, convolutions in place of linear layers, chunked attention.
 2. [apple-aiml-research/ml-ane-transformers](https://github.com/apple-aiml-research/ml-ane-transformers): Reference Transformer implementation that goes with the post above.
@@ -149,12 +160,12 @@ The focus is the inference stack itself: how weights move through unified memory
 14. [apple-aiml-research/ml-fastvlm](https://github.com/apple-aiml-research/ml-fastvlm): Apple's efficient vision encoder for VLMs, with a demo iOS app.
 15. [ANE guide](https://ane-guide.readthedocs.io/): Community documentation on programming the ANE and its constraints.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 量化与投机解码 Quantization and Speculative Decoding
+## Quantization and speculative decoding
 
 > [!NOTE]
-> Decode on a Mac is bandwidth-bound, so the bits per weight set the ceiling and speculative decoding is the only way past it. Verifying several drafted tokens is not free on Apple GPUs (see the case study below), so draft depth has to be tuned per machine.
+> Decode on a Mac is bandwidth-bound, so the bits per weight set the ceiling and speculative decoding is the only way past it. Verifying several drafted tokens is not free on Apple GPUs (see the [case study](#case-study-token-rush-on-apple-silicon)), so draft depth has to be tuned per machine.
 
 1. [MLX docs: `mx.quantize`](https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.quantize.html): The affine group-wise format MLX uses (codes, a scale and a bias per group) and its group sizes and bit widths.
 2. [mlx-lm: learned quantization](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LEARNED_QUANTS.md): DWQ, AWQ, dynamic mixed precision and GPTQ in mlx-lm, with the calibration each needs.
@@ -162,9 +173,9 @@ The focus is the inference stack itself: how weights move through unified memory
 4. [llama.cpp quantize tool](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md): How GGUF quantizations such as Q4_K_M are produced, with the importance-matrix option.
 5. [llama.cpp speculative decoding](https://github.com/ggml-org/llama.cpp/blob/master/docs/speculative.md): The draft-model and draft-free speculation modes `llama-server` supports, and their flags.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 底层 Kernels and Low Level
+## Kernels and low level
 
 1. [MLX docs: custom Metal kernels](https://ml-explore.github.io/mlx/build/html/dev/custom_metal_kernels.html): How to write a kernel body in Metal and call it from Python with `mx.fast.metal_kernel`, including grid and threadgroup setup.
 2. [Metal Shading Language Specification](https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf): The language reference: address spaces, SIMD-group functions, threadgroup memory, matrix types.
@@ -176,26 +187,26 @@ The focus is the inference stack itself: how weights move through unified memory
 8. [manishklach/mlx-metal-kernels](https://github.com/manishklach/mlx-metal-kernels): Small experimental collection of MLX custom kernels (attention, quantized matvec, RMSNorm, RoPE, SwiGLU) to read as worked examples.
 9. [BaseRT (arXiv 2607.00501)](https://arxiv.org/abs/2607.00501): Native Metal LLM runtime that issues command buffers directly with chip-specific kernel fusion; reports higher decode throughput than llama.cpp and MLX on M4 Max.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 分布式 Distributed
+## Distributed
 
 1. [MLX docs: distributed communication](https://ml-explore.github.io/mlx/build/html/usage/distributed.html): MLX collectives over MPI, ring and JACCL (RDMA over Thunderbolt 5), and how to launch multi-Mac jobs.
 2. [Explore distributed inference and training with MLX (WWDC26)](https://developer.apple.com/videos/play/wwdc2026/233/): Apple session on JACCL, RDMA over Thunderbolt 5 (macOS 26.2 and later) and sharding models across Macs.
 3. [exo-explore/exo](https://github.com/exo-explore/exo): Runs one model across several Macs with topology-aware tensor parallelism on MLX distributed, including RDMA over Thunderbolt 5.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 语音与图像 Speech and Image
+## Speech and image
 
 1. [mustafaaljadery/lightning-whisper-mlx](https://github.com/mustafaaljadery/lightning-whisper-mlx): Whisper on MLX with batched decoding and quantized models; last updated in 2024.
 2. [senstella/parakeet-mlx](https://github.com/senstella/parakeet-mlx): Nvidia's Parakeet speech-recognition models ported to MLX.
 3. [lucasnewman/f5-tts-mlx](https://github.com/lucasnewman/f5-tts-mlx): F5-TTS text-to-speech implemented in MLX.
 4. [riccardomusmeci/mlx-image](https://github.com/riccardomusmeci/mlx-image): Image classification and embedding models for MLX.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 监控 Monitoring
+## Monitoring
 
 > [!NOTE]
 > Benchmarks on a laptop drift as it heats. Watch GPU power, frequency and temperature while measuring.
@@ -204,9 +215,9 @@ The focus is the inference stack itself: how weights move through unified memory
 2. [context-labs/mactop](https://github.com/context-labs/mactop): `top`-style monitor for Apple Silicon CPU, GPU, memory and power.
 3. [vladkens/macmon](https://github.com/vladkens/macmon): Real-time Apple Silicon monitor that needs no sudo, with TUI, JSON and Prometheus output.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 评测 Benchmarks
+## Benchmarks
 
 1. [llama.cpp discussion #4167](https://github.com/ggml-org/llama.cpp/discussions/4167): Community llama-bench results for every M-series chip at pinned commits; the most reproducible cross-chip comparison.
 2. [TristanBilot/mlx-benchmark](https://github.com/TristanBilot/mlx-benchmark): Op-level timings for MLX on Apple Silicon CPU and GPU against PyTorch MPS and CUDA.
@@ -214,9 +225,9 @@ The focus is the inference stack itself: how weights move through unified memory
 4. [XiongjieDai/GPU-Benchmarks-on-LLM-Inference](https://github.com/XiongjieDai/GPU-Benchmarks-on-LLM-Inference): Nvidia GPUs versus Apple Silicon for llama.cpp inference; last updated in 2024.
 5. [Tom's Hardware: Mac Studio M4 Max local AI performance](https://www.tomshardware.com/desktops/exploring-apple-silicons-local-ai-performance-with-the-mac-studio-and-m4-max-m4-max-beats-gb10-and-strix-halo-in-decode-throughput-but-memory-bandwidth-isnt-everything/2): M4 Max against GB10 and Strix Halo on decode and prefill.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 论文 Papers
+## Papers
 
 1. [Production-Grade Local LLM Inference on Apple Silicon (arXiv 2511.05502)](https://arxiv.org/abs/2511.05502): Compares MLX, MLC-LLM, Ollama, llama.cpp and PyTorch MPS on time-to-first-token, throughput and long context.
 2. [Native LLM and MLLM Inference at Scale on Apple Silicon (arXiv 2601.19139)](https://arxiv.org/abs/2601.19139): The design of vllm-mlx: batching and multimodal serving on MLX.
@@ -224,9 +235,9 @@ The focus is the inference stack itself: how weights move through unified memory
 4. [BaseRT (arXiv 2607.00501)](https://arxiv.org/abs/2607.00501): Native Metal runtime with per-chip kernel fusion.
 5. [Recurrent Drafter (arXiv 2403.09919)](https://arxiv.org/abs/2403.09919): Apple's RNN draft model for speculative decoding, with results on Apple Silicon GPUs through MLX. [Blog](https://machinelearning.apple.com/research/recurrent-drafter), [code](https://github.com/apple-aiml-research/ml-recurrent-drafter).
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 教程 Talks and Tutorials
+## Talks and tutorials
 
 1. [WWDC25 298: Explore large language models on Apple silicon with MLX](https://developer.apple.com/videos/play/wwdc2025/298/): Text generation, quantization, fine-tuning and MLX Swift integration. [Written notes](https://wwdcnotes.com/documentation/wwdc25-298-explore-large-language-models-on-apple-silicon-with-mlx/).
 2. [WWDC25 315: Get started with MLX for Apple silicon](https://developer.apple.com/videos/play/wwdc2025/315/): Introduction to MLX: arrays, lazy evaluation, unified memory and the Python and Swift APIs.
@@ -237,30 +248,30 @@ The focus is the inference stack itself: how weights move through unified memory
 7. [MLX vs llama.cpp on Apple Silicon](https://yage.ai/share/mlx-apple-silicon-en-20260331.html): Long-form comparison covering benchmarks, M5 Neural Accelerators and Ollama's move to MLX.
 8. [tiny-llm book](https://skyzh.github.io/tiny-llm/): Week-by-week chapters for building an LLM serving stack on MLX.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 中文资源 Chinese Resources
+## Chinese-language resources
 
 > [!NOTE]
-> 这个方向的中文资料还不多，下面是能核实的部分。
+> Few Chinese-language resources cover this area yet. These are the ones that could be verified.
 
-1. [苹果官方发布大模型框架 MLX（DataLearner）](https://www.datalearner.com/blog/apple-mlx-machine-learning-framework-apple-silicon): MLX 发布时的中文介绍，讲统一内存和与 PyTorch、NumPy 的接口对应。
-2. [MLX vs llama.cpp (2026)：功能对比（Ertas AI）](https://www.ertas.ai/zh/compare/mlx-vs-llama-cpp): 两个引擎的功能和适用场景对比。
-3. [Apple Silicon 上的 MLX：当你需要自己的模型，而非 Apple 的模型](https://blakecrosley.com/zh-Hans/blog/mlx-on-device-ml-apple-silicon): 讲什么时候该用 MLX 自己跑模型，而不是用系统自带的 Foundation Models。
+1. [苹果官方发布大模型框架 MLX (DataLearner)](https://www.datalearner.com/blog/apple-mlx-machine-learning-framework-apple-silicon): Introduction written at MLX's release, covering unified memory and how its interfaces map to PyTorch and NumPy.
+2. [MLX vs llama.cpp (2026)：功能对比 (Ertas AI)](https://www.ertas.ai/zh/compare/mlx-vs-llama-cpp): Feature and use-case comparison of the two engines.
+3. [Apple Silicon 上的 MLX：当你需要自己的模型，而非 Apple 的模型](https://blakecrosley.com/zh-Hans/blog/mlx-on-device-ml-apple-silicon): When to run your own model with MLX instead of the system's built-in Foundation Models.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 相关列表 Related Lists
+## Related lists
 
-1. [antranapp/awesome-mlx](https://github.com/antranapp/awesome-mlx): MLX projects only; this list also covers ANE, Metal kernels, serving and other engines.
+1. [antranapp/awesome-mlx](https://github.com/antranapp/awesome-mlx): MLX projects only; this list also covers the ANE, Metal kernels, serving and other engines.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 学习路线 Learning Path
+## Learning path
 
-从第一次上手到自己写 Metal kernel 的阅读顺序。A reading order from first contact to writing your own Metal kernel.
+A reading order from first contact to writing your own Metal kernel.
 
-1. Build the mental model. Read the [Fundamentals](#基础原理-fundamentals) note and the [MLX unified memory](https://ml-explore.github.io/mlx/build/html/usage/unified_memory.html) page, then compute your own Mac's ceiling: bandwidth divided by model bytes.
+1. Build the mental model. Read the [Fundamentals](#fundamentals) note and the [MLX unified memory](https://ml-explore.github.io/mlx/build/html/usage/unified_memory.html) page, then compute your own Mac's ceiling: bandwidth divided by model bytes.
 2. Run something. Watch [WWDC25 315](https://developer.apple.com/videos/play/wwdc2025/315/) and [298](https://developer.apple.com/videos/play/wwdc2025/298/), then generate with [mlx-lm](https://github.com/ml-explore/mlx-lm) and with [llama.cpp](https://github.com/ggml-org/llama.cpp) on the same model and compare against your ceiling.
 3. Read a model implementation. Pick one architecture in mlx-lm's `models/` directory and follow a token from embedding to sampling, including the KV cache.
 4. Build a small engine. Work through [tiny-llm](https://skyzh.github.io/tiny-llm/): attention, KV cache, quantized matmul, batching.
@@ -269,13 +280,13 @@ The focus is the inference stack itself: how weights move through unified memory
 7. Write a kernel. Follow [custom Metal kernels](https://ml-explore.github.io/mlx/build/html/dev/custom_metal_kernels.html) to write a fused op (RMSNorm or a quantized matvec), check it against the reference op, and measure achieved GB/s.
 8. Study production kernels. Read the Metal sources in [mlx](https://github.com/ml-explore/mlx) and [ggml](https://github.com/ggml-org/ggml), and [metal-flash-attention](https://github.com/philipturner/metal-flash-attention) for attention.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-## 案例 token-rush on Apple Silicon
+## Case study: token-rush on Apple Silicon
 
 [token-rush](https://github.com/zyhector/token-rush) is a single-stream inference engine for Qwen3.8-27B built for one RTX 5090, ported here to MLX on a MacBook Pro M5 Pro (64 GB). The port lives on the `mac-mlx` branch of the fork [yuxuanfanOrion/token-rush-apple-silicon](https://github.com/yuxuanfanOrion/token-rush-apple-silicon/tree/mac-mlx) and is proposed upstream as a pull request; the full write-up with every measurement is its `docs/mac.md`. The short version:
 
-| engine on the M5 Pro, same int4 bytes | essay | code | math |
+| Engine on the M5 Pro, same int4 bytes | Essay | Code | Math |
 |---|---|---|---|
 | token-rush, DFlash2 draft (server) | 32.0 | **49.2** | **51.1** |
 | token-rush, MTP chain (server) | **34.2** | 38.4 | 38.2 |
@@ -285,25 +296,23 @@ The focus is the inference stack itself: how weights move through unified memory
 
 Decode tok/s, single stream, greedy, 256 tokens, one OpenAI-compatible client for every server.
 
-1. **Measure the wall first.** A streaming read gives 291 GB/s on this machine, so 13.65 GB of int4 weights per token caps raw decode at 21.3 tok/s. MLX's own int4 matmul already streams at 95-97% of that for one row, so hand-written GEMV is not where the time goes.
-2. **Check the format before converting.** The engine's int4 g128 asymmetric packing is byte-identical to MLX's affine 4-bit layout, so the published checkpoint loads with a `view(uint32)` and keeps its GPTQ quality.
-3. **Use an independent implementation as the reference.** mlx-lm's Qwen3.5 model on the same bytes agrees with the port to a KL of about 3e-4, two orders below the quantization's own error.
-4. **Raw decode:** 18.4 tok/s in process, 86.2% of the wall, against mlx-lm's 17.2 (80.6%) on the same bytes.
-5. **Speculative verify is not free on Apple GPUs.** MLX's int4 matmul reads the weights once per row for 2 to 15 rows, so an 8-row verify costs 2.2-3.6x a decode step (1.13x on the 5090). A Metal 4 `matmul2d` kernel on the M5 Neural Accelerators brings 8 rows to 1.45-1.85x.
-6. **The drafts are the whole margin over the rivals.** Raw decode is a tie with vllm-metal. vllm-metal rejects MTP, DFlash2's candidate head and even ngram verification for hybrid models on Metal. SGLang's MLX backend does not start on v0.5.16-v0.5.21, and v0.5.15 sends the GDN layers to a torch backend it never initializes. llama.cpp has both drafts for this model, but on this Mac it produces wrong text for unsloth's Qwen3.8-27B GGUF on Metal and on the CPU, so its speeds (16 raw, 8-11 with drafts that accept 1.2-1.5 tokens a step) are not a valid comparison.
-7. **Grouped-query attention needs folding on MLX.** MLX's multi-row attention kernel reads K/V once per query head; folding the 6 query heads of each KV head into the row dimension with an explicit causal mask made the 8-row verify 3.2x cheaper at 60k context. The needle is found at 8k, 32k and 60k, and DFlash2 still gives 17-35 tok/s there.
-8. **Check fused kernels bit for bit.** `mx.compile` of the GDN gating changed fp32 results by 3.8e-6, which the recurrence turned into a 2x larger KL to the reference on one prompt; it stays uncompiled.
-9. **Benchmark on a laptop in one interleaved run.** The same configuration measured 74 ms and later 115 ms per step as the machine heated.
+1. Measure the wall first. A streaming read gives 291 GB/s on this machine, so 13.65 GB of int4 weights per token caps raw decode at 21.3 tok/s. MLX's own int4 matmul already streams at 95-97% of that for one row, so hand-written GEMV is not where the time goes.
+2. Check the format before converting. The engine's int4 g128 asymmetric packing is byte-identical to MLX's affine 4-bit layout, so the published checkpoint loads with a `view(uint32)` and keeps its GPTQ quality.
+3. Use an independent implementation as the reference. mlx-lm's Qwen3.5 model on the same bytes agrees with the port to a KL of about 3e-4, two orders below the quantization's own error.
+4. Raw decode reaches 18.4 tok/s in process, 86.2% of the wall, against mlx-lm's 17.2 (80.6%) on the same bytes.
+5. Speculative verify is not free on Apple GPUs. MLX's int4 matmul reads the weights once per row for 2 to 15 rows, so an 8-row verify costs 2.2-3.6x a decode step (1.13x on the 5090). A Metal 4 `matmul2d` kernel on the M5 Neural Accelerators brings 8 rows to 1.45-1.85x.
+6. The drafts are the whole margin over the rivals. Raw decode is a tie with vllm-metal. vllm-metal rejects MTP, DFlash2's candidate head and even ngram verification for hybrid models on Metal. SGLang's MLX backend does not start on v0.5.16-v0.5.21, and v0.5.15 sends the GDN layers to a torch backend it never initializes. llama.cpp has both drafts for this model, but on this Mac it produces wrong text for unsloth's Qwen3.8-27B GGUF on Metal and on the CPU, so its speeds (16 raw, 8-11 with drafts that accept 1.2-1.5 tokens a step) are not a valid comparison.
+7. Grouped-query attention needs folding on MLX. MLX's multi-row attention kernel reads K/V once per query head; folding the 6 query heads of each KV head into the row dimension with an explicit causal mask made the 8-row verify 3.2x cheaper at 60k context. The needle is found at 8k, 32k and 60k, and DFlash2 still gives 17-35 tok/s there.
+8. Check fused kernels bit for bit. `mx.compile` of the GDN gating changed fp32 results by 3.8e-6, which the recurrence turned into a 2x larger KL to the reference on one prompt; it stays uncompiled.
+9. Benchmark on a laptop in one interleaved run. The same configuration measured 74 ms and later 115 ms per step as the machine heated.
 
-<div align="right"><b><a href="#目录-contents">↥ back to top</a></b></div>
+<div align="right"><a href="#contents">back to top</a></div>
 
-![](https://i.imgur.com/waxVImv.png)
+## Contributing
 
-## 贡献 Contributing
+Pull requests that add resources are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the entry format and what gets accepted.
 
-欢迎提交 PR 补充资源。See [CONTRIBUTING.md](CONTRIBUTING.md) for the entry format and what gets accepted.
-
-## Star History
+## Star history
 
 <a href="https://star-history.com/#yuxuanfanOrion/awesome-apple-silicon-llm&Date">
   <picture>
@@ -312,6 +321,6 @@ Decode tok/s, single stream, greedy, 256 tokens, one OpenAI-compatible client fo
   </picture>
 </a>
 
-## 许可 License
+## License
 
 [CC0 1.0](LICENSE)
