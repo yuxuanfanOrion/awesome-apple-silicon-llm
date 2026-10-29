@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -107,6 +107,7 @@ This list is about the inference stack itself: how weights move through unified 
 8. [PicoMLX/PicoMLXServer](https://github.com/PicoMLX/PicoMLXServer): Menu bar app that starts and stops MLX servers with an OpenAI-compatible API; last updated in 2024.
 9. [trymirai/uzu](https://github.com/trymirai/uzu): Rust inference engine with a Metal backend that uses unified memory on Apple devices, aimed at embedding models in apps.
 10. [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm): Course that builds a small LLM serving system on MLX from scratch: attention, KV cache, batching, quantized matmul. [Book](https://skyzh.github.io/tiny-llm/).
+11. [raullenchai/Rapid-MLX](https://github.com/raullenchai/Rapid-MLX): MLX inference server with OpenAI- and Anthropic-compatible APIs, tool-call parsing for coding agents and a pinned model catalog; also ships a macOS desktop app.
 
 <div align="right"><a href="#contents">back to top</a></div>
 

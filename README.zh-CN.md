@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -107,6 +107,7 @@
 8. [PicoMLX/PicoMLXServer](https://github.com/PicoMLX/PicoMLXServer)：菜单栏应用，用来启停带 OpenAI 兼容 API 的 MLX 服务；最后更新于 2024 年。
 9. [trymirai/uzu](https://github.com/trymirai/uzu)：Rust 写的推理引擎，Metal 后端利用 Apple 设备的统一内存，面向把模型嵌入应用的场景。
 10. [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm)：从零在 MLX 上搭一个小型 LLM 服务系统的课程：attention、KV cache、batching、量化 matmul。[电子书](https://skyzh.github.io/tiny-llm/)。
+11. [raullenchai/Rapid-MLX](https://github.com/raullenchai/Rapid-MLX)：基于 MLX 的推理服务，提供 OpenAI 和 Anthropic 兼容 API，为编码 agent 解析工具调用，带固定版本的模型目录；另有 macOS 桌面应用。
 
 <div align="right"><a href="#目录">回到顶部</a></div>
 

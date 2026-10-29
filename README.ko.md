@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -107,6 +107,7 @@
 8. [PicoMLX/PicoMLXServer](https://github.com/PicoMLX/PicoMLXServer): OpenAI 호환 API를 가진 MLX 서버를 켜고 끄는 메뉴 막대 앱입니다. 마지막 업데이트는 2024년입니다.
 9. [trymirai/uzu](https://github.com/trymirai/uzu): Apple 기기의 통합 메모리를 활용하는 Metal 백엔드를 갖춘 Rust 추론 엔진으로, 앱에 모델을 내장하는 용도입니다.
 10. [skyzh/tiny-llm](https://github.com/skyzh/tiny-llm): MLX 위에서 작은 LLM 서빙 시스템을 처음부터 만드는 강좌입니다. attention, KV cache, batching, 양자화 matmul을 다룹니다. [책](https://skyzh.github.io/tiny-llm/).
+11. [raullenchai/Rapid-MLX](https://github.com/raullenchai/Rapid-MLX): OpenAI 및 Anthropic 호환 API를 제공하는 MLX 추론 서버로, 코딩 에이전트를 위한 도구 호출 파싱과 고정 버전 모델 카탈로그를 갖추고 있으며 macOS 데스크톱 앱도 제공합니다.
 
 <div align="right"><a href="#목차">맨 위로</a></div>
 
