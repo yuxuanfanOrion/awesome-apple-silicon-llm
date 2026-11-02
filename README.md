@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -92,6 +92,7 @@ This list is about the inference stack itself: how weights move through unified 
 13. [frost-beta/node-mlx](https://github.com/frost-beta/node-mlx): MLX bindings for Node.js.
 14. [mlx-community on Hugging Face](https://huggingface.co/mlx-community): Thousands of models already converted and quantized for MLX.
 15. [Hugging Face Hub docs: MLX](https://huggingface.co/docs/hub/en/mlx): How MLX models are found, downloaded and uploaded on the Hub.
+16. [janmus1c/ncm-mlx](https://github.com/janmus1c/ncm-mlx): Runs the released Next-Concept Modeling TinyStories and Sudoku checkpoints on the Apple GPU with MLX, with greedy output identical to upstream PyTorch.
 
 <div align="right"><a href="#contents">back to top</a></div>
 

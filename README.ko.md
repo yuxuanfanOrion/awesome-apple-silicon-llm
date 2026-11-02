@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -92,6 +92,7 @@
 13. [frost-beta/node-mlx](https://github.com/frost-beta/node-mlx): MLX의 Node.js 바인딩입니다.
 14. [Hugging Face의 mlx-community](https://huggingface.co/mlx-community): MLX용으로 이미 변환하고 양자화한 모델 수천 개가 있습니다.
 15. [Hugging Face Hub 문서: MLX](https://huggingface.co/docs/hub/en/mlx): Hub에서 MLX 모델을 찾고, 내려받고, 올리는 방법입니다.
+16. [janmus1c/ncm-mlx](https://github.com/janmus1c/ncm-mlx): 공개된 Next-Concept Modeling TinyStories 및 스도쿠 체크포인트를 MLX로 Apple GPU에서 실행하며, 그리디 출력이 업스트림 PyTorch와 동일합니다.
 
 <div align="right"><a href="#목차">맨 위로</a></div>
 
