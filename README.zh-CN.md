@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -92,6 +92,7 @@
 13. [frost-beta/node-mlx](https://github.com/frost-beta/node-mlx)：MLX 的 Node.js 绑定。
 14. [Hugging Face 上的 mlx-community](https://huggingface.co/mlx-community)：几千个已经转换并量化好的 MLX 模型。
 15. [Hugging Face Hub 文档：MLX](https://huggingface.co/docs/hub/en/mlx)：在 Hub 上查找、下载和上传 MLX 模型的方法。
+16. [janmus1c/ncm-mlx](https://github.com/janmus1c/ncm-mlx)：用 MLX 在 Apple GPU 上运行官方发布的 Next-Concept Modeling（TinyStories 和数独）检查点，贪心生成结果与上游 PyTorch 一致。
 
 <div align="right"><a href="#目录">回到顶部</a></div>
 
