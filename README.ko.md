@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -123,6 +123,7 @@
 9. [tinygrad/tinygrad](https://github.com/tinygrad/tinygrad): Metal 백엔드를 가진 작은 프레임워크입니다. 텐서 그래프에서 Metal 코드를 생성하는 codegen이 읽기 쉬운 예제가 됩니다.
 10. [pytorch/executorch](https://github.com/pytorch/executorch): PyTorch의 온디바이스 런타임으로, Apple 하드웨어용 MPS, Core ML delegate가 있습니다.
 11. [mudler/LocalAI](https://github.com/mudler/LocalAI): llama.cpp, MLX, whisper.cpp 등을 백엔드로 감싼 로컬 API 서버로, Apple Silicon을 지원합니다.
+12. [nace-ai/kapitsa](https://github.com/nace-ai/kapitsa): 직접 작성한 Metal 커널로 GPU에서 실행하고 Neural Engine도 사용하는 네이티브 C++ 엔진으로, MLX나 llama.cpp 런타임 없이 OpenAI 및 Anthropic 호환 API를 제공합니다. Mac에서 Qwen, Nemotron 모델이나 로컬 코딩 에이전트를 실행할 때 사용합니다.
 
 <div align="right"><a href="#목차">맨 위로</a></div>
 

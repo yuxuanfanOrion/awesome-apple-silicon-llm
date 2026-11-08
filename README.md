@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -123,6 +123,7 @@ This list is about the inference stack itself: how weights move through unified 
 9. [tinygrad/tinygrad](https://github.com/tinygrad/tinygrad): Small framework with a Metal backend; its codegen is a readable example of generating Metal from a tensor graph.
 10. [pytorch/executorch](https://github.com/pytorch/executorch): PyTorch's on-device runtime, with MPS and Core ML delegates for Apple hardware.
 11. [mudler/LocalAI](https://github.com/mudler/LocalAI): Local API server whose backends wrap llama.cpp, MLX, whisper.cpp and others, with Apple Silicon among the supported targets.
+12. [nace-ai/kapitsa](https://github.com/nace-ai/kapitsa): Native C++ engine that runs on the GPU through hand-written Metal kernels and on the Neural Engine, with no MLX or llama.cpp runtime, and serves OpenAI- and Anthropic-compatible APIs; for running Qwen and Nemotron models or local coding agents on a Mac.
 
 <div align="right"><a href="#contents">back to top</a></div>
 
