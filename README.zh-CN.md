@@ -5,7 +5,7 @@
   <p>
     <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
     <img src="https://img.shields.io/badge/platform-Apple%20Silicon-black?logo=apple" alt="Apple Silicon">
-    <img src="https://img.shields.io/badge/entries-114-blue" alt="114 entries">
+    <img src="https://img.shields.io/badge/entries-115-blue" alt="115 entries">
     <img src="https://img.shields.io/badge/links%20checked-2026--10--07-green" alt="Links checked 2026-10-07">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0%201.0-lightgrey" alt="CC0 1.0"></a>
     <a href="https://github.com/yuxuanfanOrion/awesome-apple-silicon-llm/stargazers"><img src="https://img.shields.io/github/stars/yuxuanfanOrion/awesome-apple-silicon-llm?style=social" alt="GitHub stars"></a>
@@ -123,6 +123,7 @@
 9. [tinygrad/tinygrad](https://github.com/tinygrad/tinygrad)：带 Metal 后端的小型框架；它的 codegen 是从张量图生成 Metal 代码的易读范例。
 10. [pytorch/executorch](https://github.com/pytorch/executorch)：PyTorch 的端侧运行时，针对 Apple 硬件有 MPS 和 Core ML delegate。
 11. [mudler/LocalAI](https://github.com/mudler/LocalAI)：本地 API 服务，后端封装了 llama.cpp、MLX、whisper.cpp 等，支持 Apple Silicon。
+12. [nace-ai/kapitsa](https://github.com/nace-ai/kapitsa)：原生 C++ 推理引擎，通过手写 Metal kernel 在 GPU 上运行并使用 Neural Engine，不依赖 MLX 或 llama.cpp 运行时，提供兼容 OpenAI 和 Anthropic 的 API；适合在 Mac 上运行 Qwen、Nemotron 模型或本地编程智能体。
 
 <div align="right"><a href="#目录">回到顶部</a></div>
 
